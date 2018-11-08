@@ -29,7 +29,7 @@ namespace Ganapati.Controllers
             return new ApiResponse<GamePageResponse>(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("play")]
         [CustomAuthorization]
         public async Task<ApiResponse<PlayGameResponse>> PlayGame()

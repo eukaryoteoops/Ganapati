@@ -12,7 +12,7 @@ namespace Ganapati
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-
+            
             var config = GlobalConfiguration.Configuration;
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
@@ -22,6 +22,7 @@ namespace Ganapati
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            
 
         }
     }
