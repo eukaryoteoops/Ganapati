@@ -8,16 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  currentRecord: ICurrentRecord = { LastPlayerPoint: [], LastHostPoint: [], PlayerPoint: [], HostPoint: [], Winner: "" };
-  lastRecord: IlastRecord = { LastPlayerPoint: [], LastHostPoint: [] };
+  currentRecord: ICurrentRecord;
+  lastRecord: IlastRecord;
   constructor(private gameService: GameService, private router: Router) {
 
   }
 
   ngOnInit() {
-
+    this.currentRecord = { LastPlayerPoint: [], LastHostPoint: [], PlayerPoint: [], HostPoint: [], Winner: "" };
+    this.lastRecord = { LastPlayerPoint: [], LastHostPoint: [] };
     this.gameService.lastRecord().subscribe(
-      data => { this.lastRecord = data.Data },
+      data => {
+        if (data.Data == null) return;
+        this.lastRecord = data.Data
+      },
       error => { alert("Session expired."); this.router.navigate(['/sign']) });
   }
 
