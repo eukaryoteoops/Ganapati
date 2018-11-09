@@ -24,7 +24,7 @@ namespace Ganapati
             }
             using (var conn = new SQLiteConnection(Const.connString))
             {
-                var player = conn.QueryFirstOrDefault<Player>("Select * From Player Where Token = @token And ExpiredOn > datetime(\"now\")", new { token = token });
+                var player = conn.QueryFirstOrDefault<Player>("Select * From Player Where Token = @token And ExpiredOn > datetime(\"now\",\"localtime\")", new { token = token });
                 if (player == null)
                 {
                     return false;

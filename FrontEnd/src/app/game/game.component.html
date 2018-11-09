@@ -1,10 +1,10 @@
 
 <div><h3>Last Record :</h3></div><br>
-<div>PlayerPoint : </div><br>
-<div>HostPoint : </div><br>
+<div>PlayerPoint : {{lastRecord.LastPlayerPoint}}</div><br>
+<div>HostPoint : {{lastRecord.LastHostPoint}}</div><br>
 <hr>
-<div><h3>Winner :</h3></div><br>
-<div>PlayerPoint : </div><br>
-<div>HostPoint : </div><br>
+<div><h3>Winner is : {{currentRecord.Winner}}</h3></div><br>
+<div>PlayerPoint : {{currentRecord.PlayerPoint}}</div><br>
+<div>HostPoint : {{currentRecord.HostPoint}}</div><br>
 
-<button (click)="play()">Play</button>
+<button (click)="play()">Let's Play</button>

@@ -21,10 +21,13 @@ namespace Ganapati.Services
         {
             var hostPoint = RandomNumber(1, 6, 2);
             var playerPoint = RandomNumber(1, 6, 2);
+            var winner = playerPoint.Sum() - hostPoint.Sum() == 0 ? "Draw" : playerPoint.Sum() > hostPoint.Sum() ? "Player Win" : "Host Win";
+
             var lastPoint = await GetLastPoint(playerId);
             await _playerRepo.SaveRecord(playerId, hostPoint, playerPoint);
             return new PlayGameResponse
             {
+                Winner = winner,
                 HostPoint = hostPoint,
                 PlayerPoint = playerPoint,
                 LastHostPoint = lastPoint?.LastHostPoint,

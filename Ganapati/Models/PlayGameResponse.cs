@@ -6,6 +6,6 @@ namespace Ganapati.Models
     {
         public List<int> PlayerPoint { get; set; }
         public List<int> HostPoint { get; set; }
-
+        public string Winner { get; set; }
     }
 }

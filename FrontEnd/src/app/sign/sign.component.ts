@@ -15,15 +15,21 @@ export class SignComponent implements OnInit {
   }
 
   login() {
-    this.signService.login(this.obj.username, this.obj.password).subscribe(data => this.handle(data));
+    this.signService.login(this.obj.username, this.obj.password).subscribe(data => {
+      if (data.Data.Message != "Login Succeed.") {alert(data.Data.Message); return;}
+        this.handle(data)
+    });
   }
 
   register() {
-    this.signService.register(this.obj.username, this.obj.password).subscribe(data => this.handle(data));
+    this.signService.register(this.obj.username, this.obj.password).subscribe(data => {
+      if (data.Data.Message != "Login Succeed.") {alert(data.Data.Message); return;}
+        this.handle(data)
+    });
   }
 
   handle(data) {
-    sessionStorage.setItem("key" , data.token);
+    sessionStorage.setItem("token", data.Data.AccessToken);
     this.router.navigate(['/game']);
   }
 }

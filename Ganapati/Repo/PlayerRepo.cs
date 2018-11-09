@@ -30,7 +30,7 @@ namespace Ganapati.Repo
             {
                 var result = await conn.ExecuteAsync(
                     "Update Player set Token = @token,ExpiredOn = @expiredTime Where UserName = @userName",
-                    new { token, expiredTime = expiredTime.ToString(), userName }
+                    new { token, expiredTime = expiredTime.ToString("yyyy-MM-dd HH:mm:ss"), userName }
                     );
                 return result > 0;
             }

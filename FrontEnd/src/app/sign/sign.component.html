@@ -1,4 +1,6 @@
-<input type="text" name="username" [(ngModel)]="obj.username" #username="ngModel" /> <br/>
-<input type="password" name="password" [(ngModel)]="obj.password" #password="ngModel" /> <br/>
-<button (click)="register()">Register</button> <br/>
+<div>UserName</div><input type="text" name="username" [(ngModel)]="obj.username" #username="ngModel" /> <br/>
+<div>Password</div><input type="password" name="password" [(ngModel)]="obj.password" #password="ngModel" /> <br/>
+<hr>
 <button (click)="login()">Login</button>
+<span> OR </span>
+<button (click)="register()">Register</button>

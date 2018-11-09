@@ -18,15 +18,24 @@ namespace Ganapati.Controllers
         [HttpPost, Route("register")]
         public async Task<ApiResponse<TokenResponse>> Register([FromBody]RegisterRequest req)
         {
-            var result = await _playerService.Register(req);
-            return new ApiResponse<TokenResponse>(result);
+            if (ModelState.IsValid)
+            {
+                var result = await _playerService.Register(req);
+                return new ApiResponse<TokenResponse>(result);
+            }
+            return new ApiResponse<TokenResponse>(new TokenResponse { Message = "Model Error" });
+
         }
 
         [HttpPost, Route("login")]
         public async Task<ApiResponse<TokenResponse>> Login([FromBody]LoginRequest req)
         {
-            var result = await _playerService.Login(req);
-            return new ApiResponse<TokenResponse>(result);
+            if (ModelState.IsValid)
+            {
+                var result = await _playerService.Login(req);
+                return new ApiResponse<TokenResponse>(result);
+            }
+            return new ApiResponse<TokenResponse>(new TokenResponse { Message = "Model Error" });
         }
     }
 }
